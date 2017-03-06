@@ -1,3 +1,6 @@
-<input type="text" name="name">
-<input type="password" name="password">
-<button ng-click="login()">Login</button>
+
+<form ng-submit="login()">
+	<input type="text" name="name" ng-model="username">
+	<input type="password" name="password" ng-model="password">
+	<button type="submit">Login</button>
+</form>

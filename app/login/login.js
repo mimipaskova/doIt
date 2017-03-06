@@ -2,17 +2,14 @@ angular.module('doIt-app').controller('loginCtr', function ($scope, $http, $loca
 	console.log('login ctr')
 	$scope.login = function () {
 		$http.post('/login', {
-			username: $scope.useremail,
+			username: $scope.username,
 			password: $scope.password
 		}).then(function () {
 			console.log('success');
-			$location.path('/map').search({});
+			$location.url('/');
 		}, function () {
-			alert("Wrong password or email");
+			// alert("Wrong password or email");
 			console.log('fail');
 		});
-	};
-	$scope.register = function () {
-		$location.path('/register');
 	};
 });
