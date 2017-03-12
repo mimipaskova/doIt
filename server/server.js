@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
+var db = require('./models/db_connector');
+
 // app.use(function (req, res, next) {
 // 	console.log(req.url);
 // 	next();
