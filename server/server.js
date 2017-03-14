@@ -9,30 +9,22 @@ const port = 3000;
 var db = require('./models/db_connector');
 
 // app.use(function (req, res, next) {
-// 	console.log(req.url);
-// 	next();
+//  console.log(req.url);
+//  next();
 // });
 
 app.use(session({
-	secret : 'firnejg4',
-	resave : true,
+  secret : 'firnejg4',
+  resave : true,
     saveUninitialized : true
-    }));
+}));
+
+app.use(bodyParser.json());
 
 app.use(authentication.initialize()); // Add passport initialization
 app.use(authentication.session());
-app.use(bodyParser.json());
 
-
-app.post('/login',
-	function (req, res, next) {
-		console.log('/login');
-		next();
-	},
-	authentication.authenticate('local'),
-	function (req, res) {
-		res.json(req.user);
-	});
+app.use('/api', require('./controllers/login'));
 
 app.use(express.static('./app'));
 

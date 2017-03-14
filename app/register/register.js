@@ -1,7 +1,7 @@
-angular.module('doIt-app').controller('loginCtr', function ($scope, $http, $location) {
-  console.log('login ctr');
-  $scope.login = function () {
-    $http.post('/api/login', {
+angular.module('doIt-app').controller('registerCtr', function ($scope, $http, $location) {
+  console.log('register ctr');
+  $scope.register = function () {
+    $http.post('/api/register', {
       username: $scope.username,
       password: $scope.password
     }).then(function () {
