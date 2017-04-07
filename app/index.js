@@ -1,4 +1,4 @@
-angular.module('doIt-app', ['ui.router', 'ngMaterial', 'ngResource']).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+angular.module('doIt-app', ['underscore', 'ui.router', 'ngMaterial', 'ngResource']).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('login', {
     url: '/login',

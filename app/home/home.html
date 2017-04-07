@@ -1,0 +1,16 @@
+<div>
+    <md-input-container>
+        <label>City</label>
+        <md-select ng-model="$ctrl.currentCity" ng-change="$ctrl.changeCity()">
+        <md-option><em>None</em></md-option>
+        <md-option ng-repeat="city in $ctrl.cities" ng-value="city.name">
+            {{city.name}}
+        </md-option>
+        </md-select>
+    </md-input-container>
+
+    <div>Here will be the map of {{$ctrl.currentCity}}
+        <div id="map">
+        </div>
+    </div>
+</div>
