@@ -1,6 +1,16 @@
 
-<form ng-submit="register()">
-  <input type="text" name="name" ng-model="username">
-  <input type="password" name="password" ng-model="password">
-  <button type="submit">Register</button>
-</form>
+<div class="register-form">
+  <form ng-submit="register()">
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>User name</label>
+      <input  type="text" name="username" ng-model="user.username">
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>password</label>
+      <input type="password" name="password" ng-model="user.password">
+    </md-input-container>
+    <md-button class="md-raised md-primary" type="submit">Register</md-button>
+  </form>
+</div>

@@ -4,7 +4,6 @@ var crypto = require('crypto');
 
 var usersSchema = new Schema({
   email: {type: String, unique: true, required: true},
-  username: {type: String, unique: true},
   password: {type: String, required:true},
   salt: {type: String, required:true}
 });

@@ -1,4 +1,4 @@
-angular.module('doIt-app').controller('loginCtr', function ($scope, $http, $location) {
+function loginCtr($scope, $http, $state) {
   console.log('login ctr');
   $scope.login = function () {
     $http.post('/api/login', {
@@ -6,10 +6,17 @@ angular.module('doIt-app').controller('loginCtr', function ($scope, $http, $loca
       password: $scope.password
     }).then(function () {
       console.log('success');
-      $location.url('/profile');
+      $state.go("profile");
     }, function () {
       // alert("Wrong password or email");
       console.log('fail');
     });
   };
+};
+
+
+angular.module('doIt-app').component('login', {
+  bindings: {},
+  controller: loginCtr,
+  templateUrl: 'login/login.html'
 });

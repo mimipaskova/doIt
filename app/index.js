@@ -1,22 +1,21 @@
-angular.module('doIt-app', ['ngRoute', 'ngResource']).config(['$routeProvider', '$locationProvider', function ($route, $locationProvider) {
-  $locationProvider.hashPrefix('');
-  $route
-  .when('/login', {
-    templateUrl: 'login/login.html',
-    controller: 'loginCtr'
+angular.module('doIt-app', ['ui.router', 'ngMaterial', 'ngResource']).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('login', {
+    url: '/login',
+    template: '<login></login>'
   })
-  .when('/register', {
-    templateUrl: 'register/register.html',
-    controller: 'registerCtr'
+  .state('register', {
+    url: '/register',
+    template: '<register></register>'
   })
-  .when('/profile', {
-    templateUrl: 'profile/profile.html',
-    controller: 'profileCtr'
+  .state('profile', {
+    url: '/profile',
+    template: '<profile></profile>'
   })
-  .when('/', {
-    template: ''
-  })
-  .otherwise({
-    redirectTo: '/login'
+  .state('home', {
+    url: '/home',
+    template: '<home></home>'
   });
+
+  $urlRouterProvider.otherwise('/');
 }]);

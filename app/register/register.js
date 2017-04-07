@@ -1,15 +1,23 @@
-angular.module('doIt-app').controller('registerCtr', function ($scope, $http, $location) {
+function registerCtr($scope, $http, $state) {
   console.log('register ctr');
   $scope.register = function () {
+    console.log('try to register');
     $http.post('/api/register', {
-      username: $scope.username,
-      password: $scope.password
+      username: $scope.user.username,
+      password: $scope.user.password
     }).then(function () {
       console.log('success');
-      $location.url('/profile');
-    }, function () {
+      $state.go("login");
+    }, function (err) {
       // alert("Wrong password or email");
-      console.log('fail');
+      console.log('fail', err);
     });
   };
+};
+
+
+angular.module('doIt-app').component('register', {
+  bindings: {},
+  controller: registerCtr,
+  templateUrl: 'register/register.html'
 });
