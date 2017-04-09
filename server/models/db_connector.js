@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 mongoose.Promise = Promise;
 
 var User = require('./user');
+var Story = require('./story');
 
 mongoose.connect('localhost:27017/takeahike');
 
@@ -14,5 +15,6 @@ db.once('open', function() {
 });
 
 module.exports = {
-  User: User
+  User: User,
+  Story: Story
 };

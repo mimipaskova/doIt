@@ -13,8 +13,17 @@ angular.module('doIt-app', ['ngRoute', 'ngResource']).config(['$routeProvider', 
     templateUrl: 'profile/profile.html',
     controller: 'profileCtr'
   })
+  .when('/story', {
+    templateUrl: 'story/story.html',
+    controller: 'storyCtr'
+  })
+  .when('/story/:id', {
+    templateUrl: 'storyDetails/storyDetails.html',
+    controller: 'storyDetailsCtr'
+  })
   .when('/', {
-    template: ''
+    templateUrl: 'home/home.html',
+    controller: 'homeCtr'
   })
   .otherwise({
     redirectTo: '/login'

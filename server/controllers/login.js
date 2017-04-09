@@ -1,7 +1,8 @@
 const express = require('express'),
 	authentication = require('../authentication'),
 	db = require('../models/db_connector'),
-	app = express();
+	Router = express.Router,
+	app = Router();
 
 app.post('/register', function (req, resp) {
   db.User.registerUser(req.body)

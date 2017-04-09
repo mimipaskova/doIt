@@ -1,0 +1,23 @@
+Add story
+<form ng-submit="addStory()">
+  <input type="text" name="title" ng-model="title">
+  <input type="text" name="description" ng-model="description">
+  <button type="submit">Add story</button>
+</form>
+
+
+<div ng-repeat="story in stories">
+    <span>{{story.title}}</span>
+    <span>{{story.description}}</span>
+    <a ng-href="#/story/{{story._id}}">Details</a>
+</div>
+
+
+
+
+Edit story
+<form ng-submit="editStory(story)">
+  <input type="text" name="title" ng-model="story.title">
+  <input type="text" name="description" ng-model="story.description">
+  <button type="submit">Edit story</button>
+</form>

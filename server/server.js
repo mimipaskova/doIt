@@ -25,6 +25,7 @@ app.use(authentication.initialize()); // Add passport initialization
 app.use(authentication.session());
 
 app.use('/api', require('./controllers/login'));
+app.use('/api/story', require('./controllers/story'));
 
 app.use(express.static('./app'));
 
