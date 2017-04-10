@@ -1,5 +1,29 @@
+function homeCtr($scope, $http, $state, _, Cities) {
+
+    console.log(Cities);
+    this.cities = Cities.getCities();
+
+    this.showMap = function(city) {
+        console.log('show map', city);
+
+        this.currentCity = city.name;
+        var location = {latitude: city.coordinates.latitude, longitude: city.coordinates.longitude};
+        console.log(city);
+        Cities.showCity(city, 'map');
+    }
+
+};
+
+
+angular.module('doIt-app').component('home', {
+  bindings: {},
+  controller: homeCtr,
+  templateUrl: 'home/home.html'
+});
+
+
+
 function changeMarker ({latitude, longitude}) {
-    document.getElementById('map').style.display = 'block';
 
     var city = {lat: latitude, lng: longitude};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -11,25 +35,3 @@ function changeMarker ({latitude, longitude}) {
         map: map
     });
 }
-
-function homeCtr($scope, $http, $state, _, Cities) {
-
-    this.cities = Cities;
-
-    this.changeCity = function() {
-        console.log('sth changed', this.currentCity);
-        var location = _.findWhere(this.cities, {name: this.currentCity}).coordinates;
-        console.log(location);
-        changeMarker(location);
-    };
-
-    this.currentCity = '';
-
-};
-
-
-angular.module('doIt-app').component('home', {
-  bindings: {},
-  controller: homeCtr,
-  templateUrl: 'home/home.html'
-});

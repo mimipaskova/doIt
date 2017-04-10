@@ -1,0 +1,38 @@
+<div>
+    <form ng-submit="$ctrl.addCity()">
+
+    <md-input-container flex-gt-sm>
+      <label>City</label>
+      <input  type="text" name="cityName" ng-model="city.name">
+    </md-input-container>
+
+    <md-input-container flex-gt-sm>
+      <label>latitude</label>
+      <input type="number" step="any" name="latitude" ng-model="city.latitude">
+    </md-input-container>
+
+    <md-input-container flex-gt-sm>
+      <label>longitude</label>
+      <input type="number" step="any" name="longitude" ng-model="city.longitude">
+    </md-input-container>
+
+    <md-button class="md-raised md-primary" type="submit">Add city</md-button>
+  </form>
+</div>
+
+<div>
+    <md-input-container>
+        <label>City</label>
+        <md-select ng-model="$ctrl.currentCity" ng-change="$ctrl.changeCity()">
+        <md-option><em>None</em></md-option>
+        <md-option ng-repeat="city in $ctrl.cities" ng-value="city.name">
+            {{city.name}}
+        </md-option>
+        </md-select>
+    </md-input-container>
+
+    <div>Here will be the map of {{$ctrl.currentCity}}
+        <div id="map" ng-show="$ctrl.currentCity">
+        </div>
+    </div>
+</div>

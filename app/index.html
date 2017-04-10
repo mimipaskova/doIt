@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>webpack 2 demo</title>
+    <title>Angular demo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-aria.min.js"></script>
@@ -24,13 +24,19 @@
     <script src="register/register.js"></script>
     <script src="profile/profile.js"></script>
     <script src="home/home.js"></script>
+    <script src="cityDetails/cityDetails.js"></script>
+    <script src="map/map.js"></script>
+
   </head>
   <body ng-app="doIt-app">
-
+    <div>
      <md-button class="md-raised md-primary" ui-sref="home">Home</md-button>
      <md-button class="md-raised md-primary" ui-sref="login">Login</md-button>
      <md-button class="md-raised md-primary" ui-sref="register">Register</md-button>
      <md-button class="md-raised md-primary" ui-sref="profile">Profile</md-button>
+     <md-button class="md-raised md-primary" ui-sref="cityDetails">city Details</md-button>
+     <md-button class="md-raised md-primary" ui-sref="map">map</md-button>
+    </div>
     <ui-view></ui-view>
   </body>
 </html>

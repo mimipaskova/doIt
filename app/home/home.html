@@ -1,16 +1,16 @@
-<div>
-    <md-input-container>
-        <label>City</label>
-        <md-select ng-model="$ctrl.currentCity" ng-change="$ctrl.changeCity()">
-        <md-option><em>None</em></md-option>
-        <md-option ng-repeat="city in $ctrl.cities" ng-value="city.name">
-            {{city.name}}
-        </md-option>
-        </md-select>
-    </md-input-container>
-
-    <div>Here will be the map of {{$ctrl.currentCity}}
-        <div id="map">
+<div class="city-list">
+    <md-list>
+    <md-list-item class="md-2-line" ng-repeat="city in $ctrl.cities">
+        <div class="md-list-item-text">
+        <h3>{{city.name}}</h3>
+        <p>{{city.coordinates.lat}}</p>
+        <p>{{city.coordinates.lng}}</p>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.showMap(city)">show map</md-button>
         </div>
-    </div>
+    </md-list-item>
+    </md-list>
+</div>
+
+
+<div id="map" ng-show="$ctrl.currentCity">
 </div>

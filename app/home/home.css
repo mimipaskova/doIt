@@ -1,6 +1,20 @@
 #map {
-   width: 30%;
-   height: 200px;
-   background-color: grey;
-   display: none;
+  width: 35%;
+  height: 500px;
+  background-color: grey;
+  float: right;
+  margin-right: 30px;
+ }
+
+ .city-list {
+   display: inline-block;
+   margin-left: 30px;
+ }
+
+ #markers {
+  width: 35%;
+  height: 500px;
+  background-color: grey;
+  float: right;
+  margin-right: 30px;
  }
