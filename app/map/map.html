@@ -1,21 +1,22 @@
-<md-button class="md-raised md-primary" ng-click="$ctrl.showMap()">show map</md-button>
+<md-button class="md-raised md-primary" ng-click="$ctrl.showMarkers()">show all markers</md-button>
+<md-button class="md-raised md-primary" ng-click="$ctrl.hideMarkers()">hide all markers</md-button>
 
 <div>
-    <form ng-submit="$ctrl.addCity(newCity)">
+    <form ng-submit="$ctrl.addCity(city)">
 
     <md-input-container flex-gt-sm>
       <label>City</label>
-      <input  type="text" name="cityName" ng-model="newCity.name">
+      <input  type="text" name="cityName" ng-model="city.name">
     </md-input-container>
 
     <md-input-container flex-gt-sm>
       <label>latitude</label>
-      <input type="number" step="any" name="latitude" ng-model="newCity.coordinates.lat">
+      <input type="number" step="any" name="latitude" ng-model="city.coordinates.lat">
     </md-input-container>
 
     <md-input-container flex-gt-sm>
       <label>longitude</label>
-      <input type="number" step="any" name="longitude" ng-model="newCity.coordinates.lng">
+      <input type="number" step="any" name="longitude" ng-model="city.coordinates.lng">
     </md-input-container>
 
     <md-button class="md-raised md-primary" type="submit">Add city</md-button>
@@ -25,4 +26,18 @@
 
 <div id="markers">
 
+</div>
+
+
+<div class="city-list">
+    <md-list>
+    <md-list-item class="md-2-line" ng-repeat="city in $ctrl.cities">
+        <div class="md-list-item-text">
+        <h3>{{city.name}}</h3>
+        <p>{{city.coordinates.lat}}</p>
+        <p>{{city.coordinates.lng}}</p>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker(city)">show marker</md-button>
+        </div>
+    </md-list-item>
+    </md-list>
 </div>

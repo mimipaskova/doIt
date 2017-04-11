@@ -1,9 +1,8 @@
 function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
-    var map = new google.maps.Map(document.getElementById('markers'), {
-        zoom: 4,
-        center: new google.maps.LatLng( 44,22),
-        mapTypeId: 'terrain'
-    });
+
+    this.cities = Cities.getCities();
+    var markers = Cities.getMarkers();
+    var map = Cities.initMap();
 
     map.addListener('click', (e) => {
         var confirm = $mdDialog.prompt()
@@ -24,33 +23,40 @@ function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
 
 
     this.addCity = function(city) {
-        Cities.addCity(city).then(city => {
-            var marker = new google.maps.Marker({
-                position: city.coordinates,
-                map: map,
-                title: city.name
-            });
+
+        let newCity = {
+            name: city.name,
+            coordinates: {
+                lat: city.coordinates.lat,
+                lng: city.coordinates.lng
+            }
+        };
+
+        Cities.addCity(newCity).then(() => {
+            // this.showMarker(newCity);
             // marker.setMap(map);
-            map.panTo(city.coordinates);
+            map.panTo(newCity.coordinates);
         }, err => {
             console.log('It can\'t add this city', err);
         });
     };
-    
-    this.showMap = function() {
 
-        var cities = Cities.getCities();
+    this.showMarker = function(city) {
+        var cityMarker = _.find(markers, marker => {if(marker.title === city.name) return marker;});
+        map.setCenter(cityMarker.position);
+    };
 
-        cities.forEach(city => {
-            var location = {lat: city.coordinates.lat, lng: city.coordinates.lng};
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: city.name
-            });
+    this.showMarkers = function() {
 
-            marker.setMap(map);
-        });
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    };
+
+    this.hideMarkers = function() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
     };
 }
 
