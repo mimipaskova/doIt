@@ -1,7 +1,6 @@
 function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
 
     this.cities = Cities.getCities();
-    var markers = Cities.getMarkers();
     var map = Cities.initMap();
 
     map.addListener('click', (e) => {
@@ -21,9 +20,7 @@ function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
         });
     });
 
-
     this.addCity = function(city) {
-
         let newCity = {
             name: city.name,
             coordinates: {
@@ -42,21 +39,17 @@ function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
     };
 
     this.showMarker = function(city) {
-        var cityMarker = _.find(markers, marker => {if(marker.title === city.name) return marker;});
+        // If it is possible not to use all markers just to find one
+        var cityMarker = _.find(Cities.getMarkers(), marker => {if(marker.title === city.name) return marker;});
         map.setCenter(cityMarker.position);
     };
 
     this.showMarkers = function() {
-
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-        }
+        Cities.showMarkers();
     };
 
     this.hideMarkers = function() {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
-        }
+        Cities.hideMarkers();
     };
 }
 

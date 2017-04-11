@@ -1,32 +1,20 @@
-function cityDetailsCtr($scope, $http, $state, _, Cities) {
+function cityDetailsCtr($scope, $http, $state, _, Cities, $stateParams) {
+    console.log($stateParams.name);
 
-    console.log(Cities);
-    this.cities = Cities.getCities();
+    this.city = _.find(Cities.getCities(), c => {if(c.name === $stateParams.name) return c;});
 
-    this.changeCity = function() {
-        var city = _.findWhere(this.cities, {name: this.currentCity});
-        console.log(city);
-        Cities.showCity(city, 'map');
-    };
+    this.addDescription = function() {
+        this.city.description = "gewgfowefbueiwbfiwbfewbfibewfiewbfiewfbew";
+    }
 
+    console.log(this.city);
 
-    this.addCity = function() {
-        this.city = {
-            name: $scope.city.name,
-            coordinates: {
-                lat: $scope.city.latitude,
-                lng: $scope.city.longitude
-            }
-        };
-        console.log(this.city);
-        Cities.addCity(this.city).then(() => {
-            console.log('stabna');
-        }, err => {
-            console.log('error', err);
-        });
-    };
-
-    this.currentCity = '';
+    this.showMarker = function() {
+        this.map = Cities.initMap();
+        Cities.hideMarkers();
+        Cities.addMarker(this.city);
+    }
+    
 }
 
 angular.module('doIt-app').component('cityDetails', {

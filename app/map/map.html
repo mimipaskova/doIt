@@ -36,6 +36,7 @@
         <h3>{{city.name}}</h3>
         <p>{{city.coordinates.lat}}</p>
         <p>{{city.coordinates.lng}}</p>
+        <a ui-sref="cityDetails({name: city.name})">See infortmation fot the city</a>
         <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker(city)">show marker</md-button>
         </div>
     </md-list-item>

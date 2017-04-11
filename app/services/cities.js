@@ -78,6 +78,7 @@ function Cities() {
             map: this.map,
             title: city.name
         });
+
         this.markers.push(marker);
     };
 
@@ -91,6 +92,18 @@ function Cities() {
                 reject('Exists the same city');
             }
         });
+    };
+
+     this.showMarkers = function() {
+        for (var i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(this.map);
+        }
+    };
+
+    this.hideMarkers = function() {
+        for (var i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null);
+        }
     };
 
     this.getCities = function() {

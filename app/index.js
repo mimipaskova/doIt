@@ -17,7 +17,7 @@ angular.module('doIt-app', ['underscore', 'ui.router', 'ngMaterial', 'ngResource
         template: '<home></home>'
     })
     .state('cityDetails', {
-        url: '/cityDetails',
+        url: '/cityDetails/:name',
         template: '<city-details></city-details>'
     })
     .state('map', {

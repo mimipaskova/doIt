@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <form ng-submit="$ctrl.addCity()">
 
     <md-input-container flex-gt-sm>
@@ -35,4 +35,29 @@
         <div id="map" ng-show="$ctrl.currentCity">
         </div>
     </div>
+</div>-->
+
+
+<div>
+    <h1>
+        {{$ctrl.city.name}}
+    </h1>
+    <h3>
+        Latitude: {{$ctrl.city.coordinates.lat}}
+    </h3>
+    <h3>
+        Longitude: {{$ctrl.city.coordinates.lng}}
+    </h3>
+
+    <md-button class="md-raised md-primary" ng-click="$ctrl.addDescription()">Add description</md-button>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
+    <md-content>
+        {{$ctrl.city.description}}
+    </md-content>
+
+</div>
+
+
+<div id="markers" ng-show="$ctrl.map">
+
 </div>
