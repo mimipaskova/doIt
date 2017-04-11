@@ -14,20 +14,23 @@ function cityDetailsCtr($scope, $http, $state, _, Cities) {
         this.city = {
             name: $scope.city.name,
             coordinates: {
-                latitude: $scope.city.latitude,
-                longitude: $scope.city.longitude
+                lat: $scope.city.latitude,
+                lng: $scope.city.longitude
             }
-        }
+        };
         console.log(this.city);
-        Cities.addCity(this.city);
-    }
+        Cities.addCity(this.city).then(() => {
+            console.log('stabna');
+        }, err => {
+            console.log('error', err);
+        });
+    };
 
     this.currentCity = '';
-};
-
+}
 
 angular.module('doIt-app').component('cityDetails', {
-  bindings: {},
-  controller: cityDetailsCtr,
-  templateUrl: 'cityDetails/cityDetails.html'
+    bindings: {},
+    controller: cityDetailsCtr,
+    templateUrl: 'cityDetails/cityDetails.html'
 });

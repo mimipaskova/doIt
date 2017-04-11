@@ -64,10 +64,12 @@ function Cities() {
                 reject('Exists the same city');
             }
         });
-    }
+    };
+
     this.getCities = function() {
         return this.cities;
-    }
+    };
+
     this.showCity = function(city, elementId) {
         var location = {lat: city.coordinates.lat, lng: city.coordinates.lng};
         var map = new google.maps.Map(document.getElementById(elementId), {
@@ -80,5 +82,5 @@ function Cities() {
             title: city.name
         });
 
-    }
+    };
 };
