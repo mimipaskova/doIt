@@ -37,27 +37,42 @@
     </div>
 </div>-->
 
+<div class="cityDetails">
+    <div class="cityInfo">
+        <h1>
+            {{$ctrl.city.name}}
+        </h1>
+        <md-content layout-padding>
+            Latitude: {{$ctrl.city.coordinates.lat}}
+        </md-content>
+        <md-content layout-padding>
+            Longitude: {{$ctrl.city.coordinates.lng}}
+        </md-content>
+    </div>
 
-<div>
-    <h1>
-        {{$ctrl.city.name}}
-    </h1>
-    <h3>
-        Latitude: {{$ctrl.city.coordinates.lat}}
-    </h3>
-    <h3>
-        Longitude: {{$ctrl.city.coordinates.lng}}
-    </h3>
+    <div class="controls">
+        <md-button class="md-raised md-primary" ng-click="$ctrl.addDescriptionDialog()">{{$ctrl.descButton}}</md-button>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
+    </div>
 
-    <md-button class="md-raised md-primary" ng-click="$ctrl.addDescription()">Add description</md-button>
-    <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
-    <md-content>
-        {{$ctrl.city.description}}
-    </md-content>
+    <div id="description">
+    <form ng-show="showTheForm" ng-submit="$ctrl.addDescription()">
 
-</div>
+        <md-input-container flex-gt-sm>
+            <label>Enter the description</label>
+            <input  type="text" name="description" ng-model="$ctrl.description">
+        </md-input-container>
 
+        <md-button class="md-raised md-primary" type="submit">{{$ctrl.descButton}}</md-button>
+    </form>
+    </div>
 
-<div id="markers" ng-show="$ctrl.map">
+    <div ng-show="!showTheForm">
+        <md-content layout-padding>
+            {{$ctrl.city.description}}
+        </md-content>
+    </div>
 
+    <div id="markers" ng-show="$ctrl.map">
+    </div>
 </div>

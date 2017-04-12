@@ -1,7 +1,7 @@
-function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
+function mapCtr($scope, $http, $state, _, Cities, Map, $mdDialog) {
 
     this.cities = Cities.getCities();
-    var map = Cities.initMap();
+    var map = Map.initMap();
 
     map.addListener('click', (e) => {
         var confirm = $mdDialog.prompt()
@@ -32,6 +32,7 @@ function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
         Cities.addCity(newCity).then(() => {
             // this.showMarker(newCity);
             // marker.setMap(map);
+            Map.addMarker(newCity);
             map.panTo(newCity.coordinates);
         }, err => {
             console.log('It can\'t add this city', err);
@@ -40,16 +41,16 @@ function mapCtr($scope, $http, $state, _, Cities, $mdDialog) {
 
     this.showMarker = function(city) {
         // If it is possible not to use all markers just to find one
-        var cityMarker = _.find(Cities.getMarkers(), marker => {if(marker.title === city.name) return marker;});
+        var cityMarker = _.find(Map.getMarkers(), marker => {if(marker.title === city.name) return marker;});
         map.setCenter(cityMarker.position);
     };
 
     this.showMarkers = function() {
-        Cities.showMarkers();
+        Map.showMarkers();
     };
 
     this.hideMarkers = function() {
-        Cities.hideMarkers();
+        Map.hideMarkers();
     };
 }
 

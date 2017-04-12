@@ -18,3 +18,16 @@
   float: right;
   margin-right: 30px;
  }
+
+ .cityDetails {
+   margin-left: 30px;
+ }
+
+ .controls {
+   display: inline-block;
+   margin-left: 100px;
+ }
+
+ .cityInfo {
+   display: inline-block;
+ }
