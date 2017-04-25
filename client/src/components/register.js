@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Login extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            username: '',
+            username: '', 
             password: ''
         };
 
         this.onUserChange = this.onUserChange.bind(this);
-        this.loginUser = this.loginUser.bind(this);
+        this.registerUser = this.registerUser.bind(this);
     }
 
-    loginUser() {
-          axios.post('/api/login', {
+    registerUser() {
+          axios.post('/api/register', {
               username: this.state.username,
               password: this.state.password
           })
@@ -33,11 +33,14 @@ class Login extends Component {
             <form>
                 <input type="text" name="username" value={this.state.username} onChange={this.onUserChange}/>
                 <input type="password" name="password" value={this.state.password} onChange={this.onUserChange} />
-                <button type="button" onClick={this.loginUser}>Login</button>
+                <button type="button" onClick={this.registerUser}>Register</button>
             </form>
         </div>
         );
     }
 }
 
-export default Login;
+export default Register;
+
+
+
