@@ -10,20 +10,20 @@ class RegisterLoginForm extends Component {
             password: ''
         };
 
-        this.onUserChange = this.onUserChange.bind(this);
+        this.onChange = this.onChange.bind(this);
         this._confirm = this._confirm.bind(this);
     }
 
     _confirm() {
-        var blah = {
+        var user = {
             username: this.state.username,
             password: this.state.password
         };
         console.log(this.state);
-        this.props.onConfirm(blah);
+        this.props.onConfirm(user);
     }
 
-    onUserChange(event) {
+    onChange(event) {
         console.log(event.target);
         this.setState({[event.target.name]: event.target.value});
     }
@@ -33,8 +33,8 @@ class RegisterLoginForm extends Component {
         <div className="form">
 
             <form>
-                <input type="text" name="username" value={this.state.username} onChange={this.onUserChange} />
-                <input type="password" name="password" value={this.state.password} onChange={this.onUserChange}/>
+                <input type="text" name="username" value={this.state.username} onChange={this.onChange} />
+                <input type="password" name="password" value={this.state.password} onChange={this.onChange}/>
                 <button type="button" onClick={this._confirm}>{this.props.children}</button>
             </form>
         </div>

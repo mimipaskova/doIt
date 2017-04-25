@@ -12,10 +12,7 @@ class Login extends Component {
 
     loginUser(user) {
         console.log('Loginnnnnn', user);
-        axios.post('/api/login', {
-            username: user.username,
-            password: user.password
-        })
+        axios.post('/api/login', user)
         .then(res => console.log(res))
         .catch(error => console.log(error));
     }
