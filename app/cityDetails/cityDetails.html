@@ -37,7 +37,12 @@
     </div>
 </div>-->
 
+<div class="controls">
+    <md-button class="md-raised md-primary" ng-click="$ctrl.addDescriptionDialog()">{{$ctrl.descButton}}</md-button>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
+</div>
 <div class="cityDetails">
+
     <div class="cityInfo">
         <h1>
             {{$ctrl.city.name}}
@@ -48,11 +53,16 @@
         <md-content layout-padding>
             Longitude: {{$ctrl.city.coordinates.lng}}
         </md-content>
-    </div>
 
-    <div class="controls">
-        <md-button class="md-raised md-primary" ng-click="$ctrl.addDescriptionDialog()">{{$ctrl.descButton}}</md-button>
-        <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
+        <md-content layout-padding ng-show="!showTheForm">
+            {{$ctrl.city.description}}
+        </md-content>
+
+        <md-content>
+            <span ng-repeat="tag in $ctrl.city.tags">
+               {{tag}}
+            </span>
+        </md-content>
     </div>
 
     <div id="description">
@@ -67,12 +77,6 @@
     </form>
     </div>
 
-    <div ng-show="!showTheForm">
-        <md-content layout-padding>
-            {{$ctrl.city.description}}
-        </md-content>
-    </div>
-
-    <div id="markers" ng-show="$ctrl.map">
-    </div>
+</div>
+<div id="markers" ng-show="$ctrl.map">
 </div>

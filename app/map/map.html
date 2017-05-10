@@ -19,24 +19,36 @@
       <input type="number" step="any" name="longitude" ng-model="city.coordinates.lng">
     </md-input-container>
 
+    <md-input-container flex-gt-sm>
+        <label>Tags</label>
+        <md-chips ng-model="$ctrl.tags"></md-chips>
+    </md-input-container>
+
     <md-button class="md-raised md-primary" type="submit">Add city</md-button>
   </form>
 </div>
 
-
-<div id="markers">
-
+<div class="filterCity">
+    <label>Filter city</label>
+    <input type="text"  name="filterValue" ng-model="filterValue">
 </div>
 
+<div id="markers">
+</div>
 
 <div class="city-list">
     <md-list>
-    <md-list-item class="md-2-line" ng-repeat="city in $ctrl.cities">
+    <md-list-item class="md-2-line" ng-repeat="city in $ctrl.cities | filter:filterValue">
         <div class="md-list-item-text">
         <h3>{{city.name}}</h3>
         <p>{{city.coordinates.lat}}</p>
         <p>{{city.coordinates.lng}}</p>
         <p>{{city.description}}</p>
+        <p>
+            <span ng-repeat="tag in city.tags">
+               {{tag}}
+            </span>
+        </p>
         <a ui-sref="cityDetails({name: city.name})">See infortmation fot the city</a>
         <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker(city)">show marker</md-button>
         </div>

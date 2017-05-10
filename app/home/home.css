@@ -9,10 +9,11 @@
  .city-list {
    display: inline-block;
    margin-left: 30px;
+   width: 60%;
  }
 
  #markers {
-  width: 35%;
+  width: 30%;
   height: 500px;
   background-color: grey;
   float: right;
@@ -21,13 +22,26 @@
 
  .cityDetails {
    margin-left: 30px;
+   width: 500px;
+   display: inline-block;
  }
 
  .controls {
-   display: inline-block;
-   margin-left: 100px;
+    display: inline-block;
+    float: right;
+    margin-right: 200px;
  }
 
  .cityInfo {
    display: inline-block;
  }
+
+ .description {
+   display: inline-block;
+ }
+
+
+
+ .md-chips[readonly=true]{
+  box-shadow: 0 0px !important;
+}

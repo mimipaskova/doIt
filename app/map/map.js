@@ -2,6 +2,7 @@ function mapCtr($scope, $http, $state, _, Cities, Map, $mdDialog) {
 
     this.cities = Cities.getCities();
     var map = Map.initMap();
+    this.tags = [];
 
     map.addListener('click', (e) => {
         var confirm = $mdDialog.prompt()
@@ -26,7 +27,8 @@ function mapCtr($scope, $http, $state, _, Cities, Map, $mdDialog) {
             coordinates: {
                 lat: city.coordinates.lat,
                 lng: city.coordinates.lng
-            }
+            },
+            tags: this.tags
         };
 
         Cities.addCity(newCity).then(() => {
