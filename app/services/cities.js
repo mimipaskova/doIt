@@ -68,6 +68,13 @@ function Cities() {
         });
     };
 
+    this.editCity = function(city) {
+        return new Promise((resolve, reject) => {
+            _.extend(_.findWhere(this.cities, {name: city.name}), city);
+            resolve();
+        });
+    }
+
     this.addDescription = function(changedCity) {
         console.log(changedCity);
         _.find(this.cities, c => {if (c.name == changedCity.name) c.description = changedCity.description;});

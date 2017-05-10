@@ -4,28 +4,28 @@
 <div>
     <form ng-submit="$ctrl.addCity(city)">
 
-    <md-input-container flex-gt-sm>
-      <label>City</label>
-      <input  type="text" name="cityName" ng-model="city.name">
-    </md-input-container>
+        <md-input-container flex-gt-sm>
+            <label>City</label>
+            <input  type="text" name="cityName" ng-model="city.name">
+        </md-input-container>
 
-    <md-input-container flex-gt-sm>
-      <label>latitude</label>
-      <input type="number" step="any" name="latitude" ng-model="city.coordinates.lat">
-    </md-input-container>
+        <md-input-container flex-gt-sm>
+            <label>latitude</label>
+            <input type="number" step="any" name="latitude" ng-model="city.coordinates.lat">
+        </md-input-container>
 
-    <md-input-container flex-gt-sm>
-      <label>longitude</label>
-      <input type="number" step="any" name="longitude" ng-model="city.coordinates.lng">
-    </md-input-container>
+        <md-input-container flex-gt-sm>
+            <label>longitude</label>
+            <input type="number" step="any" name="longitude" ng-model="city.coordinates.lng">
+        </md-input-container>
 
-    <md-input-container flex-gt-sm>
-        <label>Tags</label>
-        <md-chips ng-model="$ctrl.tags"></md-chips>
-    </md-input-container>
+        <md-input-container flex-gt-sm>
+            <label>Tags</label>
+            <md-chips ng-model="$ctrl.tags"></md-chips>
+        </md-input-container>
 
-    <md-button class="md-raised md-primary" type="submit">Add city</md-button>
-  </form>
+        <md-button class="md-raised md-primary" type="submit">Add city</md-button>
+    </form>
 </div>
 
 <div class="filterCity">
@@ -50,6 +50,7 @@
             </span>
         </p>
         <a ui-sref="cityDetails({name: city.name})">See infortmation fot the city</a>
+        <a ui-sref="cityEdit({name: city.name})">Edit city</a>
         <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker(city)">show marker</md-button>
         </div>
     </md-list-item>
