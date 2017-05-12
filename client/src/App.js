@@ -9,7 +9,9 @@ import axios from 'axios';
 import Welcome from './pages/welcome';
 import Login from './components/login';
 import Register from './components/register';
+import Profile from './components/profile';
 import StoryContainer from './components/storyContainer';
+import ViewStory from './components/viewStory';
 import AddStory from './components/addStory';
 
 class App extends Component {
@@ -32,8 +34,10 @@ class App extends Component {
           <Route exact path="/" component={Welcome} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/profile" component={Profile} />
           <Route path="/add" component={AddStory} />
           <Route path="/story" component={StoryContainer} />
+          <Route path="/storyy/:id" component={ViewStory} />
           </div>
       </HashRouter>
 

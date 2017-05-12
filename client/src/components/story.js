@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Story extends Component {
 
     render() {
+        console.log(this.props);
         return (
         <div className="story-container">
             <img className="story-thumbnail img-thumbnail" src={'https://pbs.twimg.com/media/CdlFCYmXIAAGkiH.jpg'} alt="pandaaa" />
@@ -22,6 +24,7 @@ class Story extends Component {
             <div className="story-below">
                 <div>Споделена от: Иван Иванов</div>
                 <div>Дата:{this.props.createdDate}</div>
+                <Link to={{ pathname: '/storyy/' + this.props.id }}>See the story</Link>
             </div>
         </div>
         );

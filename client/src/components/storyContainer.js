@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Story from './story';
+import { Link } from 'react-router-dom';
 
 class StoryContainer extends Component {
 
@@ -27,7 +28,7 @@ class StoryContainer extends Component {
 
     getStories() {
         var content = this.state.stories.map(story => {
-            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} />
+            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} />
         });
         this.setState({content});
     }
@@ -37,6 +38,7 @@ class StoryContainer extends Component {
         return (
         <div className="App">
             <button type="button" onClick={this.getStories}>Get all stories</button>
+             <Link to="/add">Add story</Link>
             <div>
                 {this.state.content}
             </div>
