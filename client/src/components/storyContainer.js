@@ -10,11 +10,13 @@ class StoryContainer extends Component {
 
         this.state = {
             stories: [],
-            content: ''
+            content: '',
+            filterValue: ''
         };
 
         this.getStories = this.getStories.bind(this);
         this.fetchStories = this.fetchStories.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -27,16 +29,24 @@ class StoryContainer extends Component {
     }
 
     getStories() {
-        var content = this.state.stories.map(story => {
-            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} userId={story.userId}/>
-        });
+        var content = this.state.stories
+            .filter(story => {
+                return story.title.toLowerCase().includes(this.state.filterValue)})
+            .map(story => {
+                return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} userId={story.userId}/>
+            });
         this.setState({content});
     }
 
+    handleChange(event) {
+        this.setState({filterValue: event.target.value}, () => this.getStories());
+    }
+
     render() {
-        console.log(this.state);
         return (
         <div className="App">
+            <label>Filter by name</label>
+            <input value={this.state.filterValue} onChange={this.handleChange}/>
             <button type="button" onClick={this.getStories}>Get all stories</button>
              <Link to="/add">Add story</Link>
             <div>
