@@ -13,7 +13,11 @@ app.post('/', function (req, resp) {
 });
 
 app.get('/', function (req, res) {
-    db.Story.find()
+    var filterStories = {};
+    if(req.query.userId) {
+        filterStories = {userId: req.query.userId};
+    }
+    db.Story.find(filterStories)
         .then(stories => res.json(stories), err => res.sendStatus(500));
 });
 

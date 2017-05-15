@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Story from './story';
 
 class Profile extends Component {
 
@@ -7,18 +8,21 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            userProfile: ''
+            userProfile: '',
+            stories: [],
+            content: ''
         };
 
-        // this.fetchProfile = this.fetchProfile.bind(this);
+        this.getStories = this.getStories.bind(this);
+        this.fetchStories = this.fetchStories.bind(this);
     }
 
     componentDidMount() {
         console.log(this.state);
         axios.get('/api/profile')
-        .then(res => {console.log(res.data); return this.setState({userProfile: res.data})});
+        .then(res => {console.log(res.data); return this.setState({userProfile: res.data})})
+        .then(() => this.fetchStories(this.state.userProfile._id));
         console.log(this.state);
-        
     }
 
     logoutUser() {
@@ -28,11 +32,30 @@ class Profile extends Component {
         .catch(error => console.log(error));
     }
 
+    fetchStories(userId) {
+        console.log(userId);
+        axios.get('/api/story?userId=' + userId)
+        .then(res => this.setState({stories: res.data}));
+    }
+
+    getStories() {
+        var content = this.state.stories.map(story => {
+            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} userId={story.userId}/>
+        });
+        this.setState({content});
+    }
+
     render() {
         return (
             <div>
                 Email: {this.state.userProfile.email}
-                <button type="button" onClick={this.logoutUser}>Logout</button>
+                <div className="buttons">
+                    <button type="button" onClick={this.getStories}>My stories</button>
+                    <button type="button" onClick={this.logoutUser}>Logout</button>
+                </div>
+                <div className="App">
+                    {this.state.content}
+                </div>
             </div>
         )
     }

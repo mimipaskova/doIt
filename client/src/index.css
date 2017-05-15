@@ -32,3 +32,8 @@ body {
 .story-below {
 
 }
+
+.buttons {
+    float: right;
+    margin: 50px;
+}

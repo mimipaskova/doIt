@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  HashRouter,
+  BrowserRouter,
   Route
 } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
           <div>
           <Route exact path="/" component={Welcome} />
           <Route path="/login" component={Login} />
@@ -39,7 +39,7 @@ class App extends Component {
           <Route path="/story" component={StoryContainer} />
           <Route path="/storyy/:id" component={ViewStory} />
           </div>
-      </HashRouter>
+      </BrowserRouter>
 
     );
   }

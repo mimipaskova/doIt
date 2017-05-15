@@ -28,7 +28,7 @@ class StoryContainer extends Component {
 
     getStories() {
         var content = this.state.stories.map(story => {
-            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} />
+            return <Story key={story._id} title={story.title} description={story.description} createdDate={story.createdDate} id={story._id} userId={story.userId}/>
         });
         this.setState({content});
     }
