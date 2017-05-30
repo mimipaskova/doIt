@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class RegisterLoginForm extends Component {
 
@@ -33,9 +35,11 @@ class RegisterLoginForm extends Component {
         <div className="form">
 
             <form>
-                <input type="text" name="username" value={this.state.username} onChange={this.onChange} />
-                <input type="password" name="password" value={this.state.password} onChange={this.onChange}/>
-                <button type="button" onClick={this._confirm}>{this.props.children}</button>
+                <TextField type="text" name="username" value={this.state.username} onChange={this.onChange} />
+                <br />
+                <TextField type="password" name="password" value={this.state.password} onChange={this.onChange}/>
+                <br />
+                <RaisedButton type="button" onClick={this._confirm}>{this.props.children}</RaisedButton>
             </form>
         </div>
         );

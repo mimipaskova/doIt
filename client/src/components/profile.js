@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Story from './story';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
 
@@ -50,8 +52,9 @@ class Profile extends Component {
             <div>
                 Email: {this.state.userProfile.email}
                 <div className="buttons">
-                    <button type="button" onClick={this.getStories}>My stories</button>
-                    <button type="button" onClick={this.logoutUser}>Logout</button>
+                    <RaisedButton type="button" containerElement={<Link to="/story" />}>Home</RaisedButton>
+                    <RaisedButton type="button" onClick={this.getStories}>My stories</RaisedButton>
+                    <RaisedButton type="button" onClick={this.logoutUser}>Logout</RaisedButton>
                 </div>
                 <div className="App">
                     {this.state.content}

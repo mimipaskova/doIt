@@ -24,7 +24,7 @@ class Story extends Component {
             <div className="story-below">
                 <div>Споделена от: Иван Иванов</div>
                 <div>Дата:{this.props.createdDate}</div>
-                <Link to={{ pathname: '/storyy/' + this.props.id }}>See the story</Link>
+                { this.props.id ? <Link to={{ pathname: '/storyy/' + this.props.id }}>See the story</Link> : ''}
             </div>
         </div>
         );

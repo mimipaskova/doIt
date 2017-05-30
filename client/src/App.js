@@ -4,6 +4,9 @@ import {
   Route
 } from 'react-router-dom';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 import './App.css';
 import axios from 'axios';
 import Welcome from './pages/welcome';

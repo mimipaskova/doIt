@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Story from './story';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class StoryContainer extends Component {
 
@@ -46,8 +48,10 @@ class StoryContainer extends Component {
         return (
         <div className="App">
             <label>Filter by name</label>
-            <input value={this.state.filterValue} onChange={this.handleChange}/>
-            <button type="button" onClick={this.getStories}>Get all stories</button>
+            <TextField value={this.state.filterValue} onChange={this.handleChange}/>
+            <br/>
+            <RaisedButton type="button" onClick={this.getStories}>Get all stories</RaisedButton>
+            <br />
              <Link to="/add">Add story</Link>
             <div>
                 {this.state.content}

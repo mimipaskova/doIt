@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class AddStory extends Component {
 
@@ -36,9 +38,11 @@ class AddStory extends Component {
     render() {
         return (
             <div>
-                <input type="text" name="title" value={this.state.title} onChange={this.onChange} />
-                <input type="text" name="description" value={this.state.description} onChange={this.onChange}/>
-                <button type="button" onClick={this.addStory}>Add story</button>
+                <TextField type="text" name="title" value={this.state.title} onChange={this.onChange} />
+                <br />
+                <TextField type="text" name="description" value={this.state.description} onChange={this.onChange}/>
+                <br />
+                <RaisedButton type="button" onClick={this.addStory}>Add story</RaisedButton>
             </div>
         )
     }
