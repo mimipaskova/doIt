@@ -26,7 +26,7 @@ class ViewStory extends Component {
     }
 
     getStory() {
-        var content = <Story title={this.state.story.title} description={this.state.story.description} createdDate={this.state.story.createdDate} id={this.state.story.id}/>;
+        var content = <Story title={this.state.story.title} description={this.state.story.description} createdDate={this.state.story.createdDate} id={this.state.story._id}/>;
         this.setState({content});
     }
 

@@ -16,6 +16,7 @@ import Profile from './components/profile';
 import StoryContainer from './components/storyContainer';
 import ViewStory from './components/viewStory';
 import AddStory from './components/addStory';
+import EditStory from './components/editStory';
 
 class App extends Component {
 
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/profile" component={Profile} />
           <Route path="/add" component={AddStory} />
+          <Route path="/edit/:id" component={EditStory} />
           <Route path="/story" component={StoryContainer} />
           <Route path="/storyy/:id" component={ViewStory} />
           </div>

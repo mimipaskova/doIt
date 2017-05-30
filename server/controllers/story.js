@@ -30,9 +30,10 @@ app.get('/:id', function (req, res) {
 app.put('/:id', function (req, res) {
     db.Story.findOneAndUpdate({_id: req.params.id, userId: req.user._id}, req.body, {new:true})
         .then(
-            updatedStory => resp.json(updatedStory), err => {
+            updatedStory => res.json(updatedStory),
+            err => {
                 console.error('Cannot update story', err);
-                resp.sendStatus(500)
+                res.sendStatus(500)
             }
         );
 });
