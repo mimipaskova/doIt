@@ -7,6 +7,7 @@ const express = require('express'),
 app.post('/register', function (req, resp) {
   db.User.registerUser(req.body)
   .then(newUser => {
+      console.log(newUser);
       req.session.user = newUser;
       resp.sendStatus(200);
   }, err => {
@@ -35,6 +36,17 @@ app.use('/', function (req, res, next) {
 
 app.get('/profile', function(req, res) {
   res.json(req.user);
+});
+
+app.put('/me', function (req, res) {
+    db.User.findOneAndUpdate({_id:req.user._id}, req.body, {new:true})
+    .then(
+        updatedUser => res.json(updatedUser),
+        err => {
+            console.error('Cannot update the user', err);
+            res.sendStatus(500)
+        }
+    );
 });
 
 module.exports = app;

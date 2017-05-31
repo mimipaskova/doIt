@@ -3,6 +3,7 @@ import axios from 'axios';
 import Story from './story';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
+import TextField from 'material-ui/TextField';
 
 class Profile extends Component {
 
@@ -12,19 +13,41 @@ class Profile extends Component {
         this.state = {
             userProfile: '',
             stories: [],
-            content: ''
+            content: '',
+            email: ''
         };
 
         this.getStories = this.getStories.bind(this);
+        this.getProfile = this.getProfile.bind(this);
+        this.onChange    = this.onChange.bind(this);
+        this.editProfile = this.editProfile.bind(this);
         this.fetchStories = this.fetchStories.bind(this);
     }
 
     componentDidMount() {
         console.log(this.state);
-        axios.get('/api/profile')
-        .then(res => {console.log(res.data); return this.setState({userProfile: res.data})})
-        .then(() => this.fetchStories(this.state.userProfile._id));
+       this.getProfile();
         console.log(this.state);
+    }
+
+    getProfile() {
+         axios.get('/api/profile')
+        .then(res => {console.log(res.data); return this.setState({userProfile: res.data, email: res.data.email})})
+        .then(() => this.fetchStories(this.state.userProfile._id));
+    }
+
+    onChange(event) {
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    editProfile() {
+        var profile = {
+            email: this.state.email
+        }
+        axios.put('/api/me', profile)
+        .then(res => console.log(res))
+        .then(() => this.getProfile())
+        .catch(error => console.log(error));
     }
 
     logoutUser() {
@@ -51,8 +74,11 @@ class Profile extends Component {
         return (
             <div>
                 Email: {this.state.userProfile.email}
+                <br />
+                <TextField floatingLabelText="email" type="text" name="email" value={this.state.email} onChange={this.onChange} />
                 <div className="buttons">
                     <RaisedButton type="button" containerElement={<Link to="/story" />}>Home</RaisedButton>
+                    <RaisedButton type="button" onClick={this.editProfile}>Edit profile</RaisedButton>
                     <RaisedButton type="button" onClick={this.getStories}>My stories</RaisedButton>
                     <RaisedButton type="button" onClick={this.logoutUser}>Logout</RaisedButton>
                 </div>
