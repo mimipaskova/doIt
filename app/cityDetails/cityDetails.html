@@ -41,9 +41,9 @@
     <md-button class="md-raised md-primary" ng-click="$ctrl.addDescriptionDialog()">{{$ctrl.descButton}}</md-button>
     <md-button class="md-raised md-primary" ng-click="$ctrl.showMarker()">show city in the map</md-button>
 </div>
-<div class="cityDetails">
+<div class="cityDetails" layout="row">
 
-    <div class="cityInfo">
+    <div class="cityInfo" layout="row">
         <h1>
             {{$ctrl.city.name}}
         </h1>
@@ -61,6 +61,11 @@
         <md-content>
             <span ng-repeat="tag in $ctrl.city.tags">
                {{tag}}
+            </span>
+        </md-content>
+        <md-content class="photos">
+            <span ng-repeat="photo in $ctrl.city.photos">
+                <img  ng-src="{{photo}}" alt="Description" />
             </span>
         </md-content>
     </div>

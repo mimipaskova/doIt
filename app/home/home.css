@@ -20,7 +20,7 @@
   margin-right: 30px;
  }
 
- .cityDetails {
+ /*.cityDetails {
    margin-left: 30px;
    width: 500px;
    display: inline-block;
@@ -38,10 +38,19 @@
 
  .description {
    display: inline-block;
- }
+ }*/
 
 
 
- .md-chips[readonly=true]{
+ /*.md-chips[readonly=true]{
   box-shadow: 0 0px !important;
+}*/
+
+.photos img{
+    height: 200px;
+}
+
+.cityInfo {
+  background-color: green;
+  font-style: italic;
 }
