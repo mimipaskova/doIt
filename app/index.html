@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Angular demo</title>
@@ -16,11 +17,13 @@
     <link rel="stylesheet" href="register/register.css">
     <link rel="stylesheet" href="home/home.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="people/people.css">
 
     <script src="services/underscore.js"></script>
     <script src="index.js"></script>
     <script src="services/cities.js"></script>
     <script src="services/map.js"></script>
+    <script src="services/people.js"></script>
     <script src="resources.js"></script>
     <script src="login/login.js"></script>
     <script src="register/register.js"></script>
@@ -29,10 +32,12 @@
     <script src="cityDetails/cityDetails.js"></script>
     <script src="cityEdit/cityEdit.js"></script>
     <script src="map/map.js"></script>
+    <script src="people/people.js"></script>
 
   </head>
   <body ng-app="doIt-app">
     <div class="nav-header">
+     <md-button class="md-raised md-primary" ui-sref="people">MentorMate people</md-button>
      <md-button class="md-raised md-primary" ui-sref="home">Home</md-button>
      <md-button class="md-raised md-primary" ui-sref="login">Login</md-button>
      <md-button class="md-raised md-primary" ui-sref="register">Register</md-button>

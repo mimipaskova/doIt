@@ -27,6 +27,10 @@ angular.module('doIt-app', ['underscore', 'ui.router', 'ngMaterial', 'ngResource
     .state('map', {
         url: '/map',
         template: '<map></map>'
+    })
+    .state('people', {
+        url: '/people',
+        template: '<people></people>'
     });
 
     $urlRouterProvider.otherwise('/');

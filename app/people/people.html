@@ -1,0 +1,32 @@
+<div>
+    <label>Filter people</label>
+    <input type="text"  name="filterValue" ng-model="$ctrl.searchString" ng-change="$ctrl.filtering()"><br><br>
+    <div class="md-list-item-text radioButtons">
+        <label ng-repeat="(key, value) in $ctrl.people[0]">{{key}} <input type="radio" ng-click="$ctrl.search(key)" name="option"><br>
+    </div>
+</div>
+
+<div>
+    <md-list>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text person-box">
+            <span  ng-repeat="(key, value) in $ctrl.people[0]">{{key}}</span>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-repeat="person in $ctrl.filteredPeople">
+        <div class="md-list-item-text person-box" ng-click="$ctrl.seePerson($event, person)">
+            <h3>{{person.name}}</h3>
+            <span><img class="md-avatar" ng-src="{{person.picture}}" alt="{{person.name}}"/></span>
+            <span>{{person.ipPhone}}</span>
+            <span>{{person.technology}}</span>
+            <span>{{person.position}}</span>
+            <span>{{person.email}}</span>
+            <span>{{person.skype}}</span>
+            <span>{{person.startDate | date:"MM/dd/yyyy"}}</span>
+            <span>{{person.birthDate | date:"MM/dd/yyyy"}}</span>
+
+            <!--<a ui-sref="cityDetails({name: city.name})">See infortmation fot the city</a>-->
+        </div>
+    </md-list-item>
+    </md-list>
+</div>
